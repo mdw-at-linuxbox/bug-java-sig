@@ -174,11 +174,11 @@ public class p8 {
 		    .withPartSize(thispartsize);
 		partETags.add(s3.uploadPart(upr).getPartETag());
 		filePosition += thispartsize;
-		CompleteMultipartUploadRequest cr = new
-		    CompleteMultipartUploadRequest(bucketName, keyName,
-		    irr.getUploadId(), partETags);
-		s3.completeMultipartUpload(cr);
 	    }
+	    CompleteMultipartUploadRequest cr = new
+		CompleteMultipartUploadRequest(bucketName, keyName,
+		irr.getUploadId(), partETags);
+	    s3.completeMultipartUpload(cr);
         } catch (AmazonServiceException ase) {
 // s3.abortMultipartUpload(new AbortMultipartUploadRequest(
 // bucketName, keyName, irr.getUploadId()));
